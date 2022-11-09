@@ -1,7 +1,7 @@
 import { Divider, Input, Button } from 'antd';
 import { useState } from 'react';
 
-function AddFoodForm(allFoods, setFoods) {
+function AddFoodForm({allFoods, setAllFoods}) {
   const [form, setForm] = useState({
     name: '',
     calories: 0,
@@ -16,7 +16,7 @@ function AddFoodForm(allFoods, setFoods) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setFoods([...allFoods, form]);
+    setAllFoods([...allFoods, form]);
 
     setForm({
       name: '',
@@ -68,9 +68,7 @@ function AddFoodForm(allFoods, setFoods) {
         />
         {/* render antd <Input /> type="number" here */}
 
-        <button type="submit" onClick={handleSubmit}>
-          Create
-        </button>
+        <button type="submit" onClick={handleSubmit}>Create</button>
       </form>
     </div>
   );
