@@ -1,7 +1,7 @@
 import { Divider, Input, Button } from 'antd';
 import { useState } from 'react';
 
-function AddFoodForm({allFoods, setAllFoods}) {
+function AddFoodForm({ allFoods, setAllFoods }) {
   const [form, setForm] = useState({
     name: '',
     calories: 0,
@@ -10,6 +10,8 @@ function AddFoodForm({allFoods, setAllFoods}) {
   });
 
   function handleChange(e) {
+    console.log(e.target.name) //isso me traz a key(o name) do input
+    console.log(e.target.value) // isso me traz a tecla que eu cliquei
     setForm({ ...form, [e.target.name]: e.target.value });
     console.log(e.target.name);
   }
@@ -28,7 +30,7 @@ function AddFoodForm({allFoods, setAllFoods}) {
 
   return (
     <div>
-      <form>
+      <form style={{ width: '70vw' }}>
         <Divider>Add Food Entry</Divider>
 
         <label>Name</label>
@@ -43,14 +45,14 @@ function AddFoodForm({allFoods, setAllFoods}) {
         <Input
           value={form.image}
           name="image"
-          type="url"
+          type="text"
           onChange={handleChange}
         />
         {/* render antd <Input /> type="text" here */}
 
         <label>Calories</label>
         <Input
-          value={form.calorie}
+          value={form.calories}
           min="0"
           name="calories"
           type="number"
@@ -68,7 +70,9 @@ function AddFoodForm({allFoods, setAllFoods}) {
         />
         {/* render antd <Input /> type="number" here */}
 
-        <button type="submit" onClick={handleSubmit}>Create</button>
+        <button type="submit" onClick={handleSubmit}>
+          Create
+        </button>
       </form>
     </div>
   );
